@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>Local Storage and Ajax Demo</title>
+    <script src='Assignment3Part2.js'></script>
+</head>
+<body>
+    <div> Search Parameters</div>
+    <div id="output"></div>
+    <form>
+        <p>You can select any or all of the following languages (selecting none will return results for all):</p>
+        <input type='checkbox' name='Language' value = 'Python'><label>Python</label>
+        <input type='checkbox' name='Language' value = 'JSON'><label>JSON</label>
+        <input type='checkbox' name='Language' value = 'JavaScript'><label>JavaScript</label>
+        <input type='checkbox' name='Language' value = 'SQL'><label>SQL</label>
+        <br />
+        <p>Enter the number of pages you would like to include:</p>
+        <select name = numofpages>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <br /><br />
+        <input type='button' name='save' onclick='Search()' value='Search'>
+
+    </form>
+
+    <section>
+    <h1>Search Results</h1>
+    </section>
+
+    <section>
+    <h1>Favorites</h1>
+        <div id="ListOfFavorites" </div>
+    </section>
+</body>
+</html>
