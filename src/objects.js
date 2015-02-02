@@ -9,8 +9,13 @@
 */
 
 function returnObjectLiteral() {
-  //your code here
-  return undefined; //Modify ONLY this line
+    //your code here
+    return { 
+        type: 'Goldfish',
+        brand: 'Pepperidge Farm',
+        flavor: 'Cheddar',
+        count: 2000};
+  //Modify ONLY this line
   //end your code
 }
 
@@ -37,6 +42,50 @@ function returnObjectLiteral() {
 */
 
 //your code here
+function MessageLog(user){
+
+    this.user = user;
+    this.sent = 0;
+    this.rec = 0;
+    this.messagessent = new Array();
+    this.messagesrec = "";
+}
+
+
+MessageLog.prototype.logMessage = function (messageText, direction) {
+
+    if (direction === 0) {
+        this.sent = this.sent + 1;
+        this.messagessent.unshift(messageText);
+        if (this.messagessent.length > 5) {
+            this.messagessent.pop();
+        }
+    }
+
+    if (direction === 1) {
+        this.rec = this.rec + 1;
+        this.messagesrec = messageText;
+    }
+}
+    
+MessageLog.prototype.lastReceivedMessage = function (){
+    return (this.messagesrec);
+}
+
+MessageLog.prototype.getSentMessage = function(n){   
+    if(n>=0 && n<=4){
+        return (this.messagessent[n]);
+    }
+}
+
+MessageLog.prototype.totalSent = function(){
+        return(this.sent);
+}
+
+MessageLog.prototype.totalReceived = function(){
+        return(this.rec);
+}
+
 
 //end your code
 
@@ -49,7 +98,9 @@ function returnObjectLiteral() {
 * work.
 */
 //your code here
-
+MessageLog.prototype.systemReceived = function(){
+    return (this.sent + this.rec);
+}
 //end your code
 
 /**
@@ -58,5 +109,8 @@ function returnObjectLiteral() {
 */
 
 //your code here
-
+var myLog = new MessageLog('BlackHatGuy');
+  myLog.logMessage('foo', 1);
+  myLog.logMessage('bar', 1);
+  myLog.logMessage('baz', 1);
 //end your code
