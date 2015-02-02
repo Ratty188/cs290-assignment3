@@ -13,7 +13,9 @@
 */
 
 //your code here
-
+function uselessFunction() {
+    return null;
+}
 //end your code
 
 var bar = 'not a function';
@@ -30,6 +32,26 @@ var barType = typeof bar;
 */
 
 //your code here
+
+
+bar = function (doublearray) {
+
+    if (typeof (doublearray) === 'object') {
+        for (var i = 0; i < doublearray.length; i++) {
+            if (typeof (doublearray[i]) == 'number') {
+                doublearray[i] = doublearray[i] * 2;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    else {
+        return false;
+    }
+    return true;
+}
+
 
 //end your code
 
@@ -65,5 +87,52 @@ function GitLog(hash, date, message) {
 */
 
 //your code here
+/*
+function parseGit(logArray) {
+    var i, log, hash, date, message, cut1, cut2, newLog;
+    var gitLogArray = new Array();
+
+    for (i = 0; i < logArray.length; i++) {
+        log = logArray[i];
+        cut1 = log.indexOf(' ');
+        cut2 = log.indexOf('"');
+        hash = log.slice(0, cut1);
+        date = new Date(log.slice(cut1 + 1, cut2 - 1));
+        message = log.slice(cut2);
+        message = message.replace(/"/g, '');
+        newLog = new GitLog(hash, date, message);
+        gitLogArray.push(newLog);
+    }
+    return gitLogArray;
+}
+*/
+function parseGit(array) {
+
+    var hash;
+    var date;
+    var message;
+    var endofhash;
+    var endofdate;
+    var endofmessage;
+    var temparray;
+    var gitLogArray = new Array;
+    var temp;
+
+    for (var i = 0; i < array.length; i++) {
+        temp = array[i];
+        endofhash = temp.indexOf(' ');
+        endofdate = temp.indexOf('"');
+        endofmessage = temp.indexOf('"', endofdate+1);
+        hash = temp.slice(0, endofhash);
+        date = (temp.slice(endofhash + 1, endofdate - 1));
+        date = new Date(date);
+        message = temp.slice(endofdate + 1, endofmessage);
+        temparray = new GitLog(hash, date, message);
+        gitLogArray.push(temparray);
+    }
+
+    return gitLogArray;
+}
+
 
 //end your code
